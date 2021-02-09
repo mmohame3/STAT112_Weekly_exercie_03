@@ -1,6 +1,6 @@
 ---
 title: 'Weekly Exercises #3'
-author: "Put your name here"
+author: "Mohamed Abdi Mohamed"
 output: 
   html_document:
     keep_md: TRUE
@@ -76,14 +76,34 @@ These exercises will reiterate what you learned in the "Expanding the data wrang
   1. Summarize the `garden_harvest` data to find the total harvest weight in pounds for each vegetable and day of week (HINT: use the `wday()` function from `lubridate`). Display the results so that the vegetables are rows but the days of the week are columns.
 
 ```{r}
-
+garden_harvest %>%
+  select(vegetable, weight, date) %>% 
+  mutate(day = wday(date, label = TRUE)) %>% 
+  group_by(vegetable, day) %>% 
+  summarise(tot_wt_lbs = sum(weight * 0.00220462)) 
+  
+ 
 ```
 
   2. Summarize the `garden_harvest` data to find the total harvest in pound for each vegetable variety and then try adding the plot from the `garden_planting` table. This will not turn out perfectly. What is the problem? How might you fix it?
 
 ```{r}
+garden_harvest %>% 
+  group_by(vegetable) %>% 
+  summarise(tot_wt_lbs = sum(weight * 0.00220462)) %>% 
+  left_join(garden_planting, by = "vegetable")
 
 ```
+ 
+ > We see NA values. This is because the left_join output all cases from garden_harvest even if it doesn't have a match on garden_planting. To fix this, we can use the inner_join()
+ 
+```{r}
+garden_harvest %>% 
+  group_by(vegetable) %>% 
+  summarise(tot_wt_lbs = sum(weight * 0.00220462)) %>% 
+  inner_join(garden_planting, by = "vegetable")
+```
+ 
 
   3. I would like to understand how much money I "saved" by gardening, for each vegetable type. Describe how I could use the `garden_harvest` and `garden_spending` datasets, along with data from somewhere like [this](https://products.wholefoodsmarket.com/search?sort=relevance&store=10542) to answer this question. You can answer this in words, referencing various join functions. You don't need R code but could provide some if it's helpful.
 
@@ -231,6 +251,5 @@ This problem uses the data from the Tidy Tuesday competition this week, `kids`. 
 
   21. In this exercise, you are going to try to replicate the graph below, created by Georgios Karamanis. I'm sure you can find the exact code on GitHub somewhere, but **DON'T DO THAT!** You will only be graded for putting an effort into this problem. So, give it a try and see how far you can get without doing too much googling. HINT: use `facet_geo()`. The graphic won't load below since it came from a location on my computer. So, you'll have to reference the original html on the moodle page to see it.
   
-![](kids_data_karamanis.jpeg)
 
 **DID YOU REMEMBER TO UNCOMMENT THE OPTIONS AT THE TOP?**
