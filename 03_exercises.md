@@ -16,42 +16,8 @@ output:
 
 ```r
 library(tidyverse)     # for graphing and data cleaning
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-```
-
-```
-## v ggplot2 3.3.3     v purrr   0.3.4
-## v tibble  3.0.5     v dplyr   1.0.3
-## v tidyr   1.1.2     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.0
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(gardenR)       # for Lisa's garden data
 library(lubridate)     # for date manipulation
-```
-
-```
-## 
-## Attaching package: 'lubridate'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     date, intersect, setdiff, union
-```
-
-```r
 library(ggthemes)      # for even more plotting themes
 library(geofacet)      # for special faceting with US map layout
 theme_set(theme_minimal())       # My favorite ggplot() theme :)
@@ -70,19 +36,6 @@ data("garden_planting")
 
 # Tidy Tuesday data
 kids <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-15/kids.csv')
-```
-
-```
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   state = col_character(),
-##   variable = col_character(),
-##   year = col_double(),
-##   raw = col_double(),
-##   inf_adj = col_double(),
-##   inf_adj_perchild = col_double()
-## )
 ```
 
 ## Setting up on GitHub!
@@ -135,10 +88,6 @@ garden_harvest %>%
               values_from = tot_wt_lbs)
 ```
 
-```
-## `summarise()` has grouped output by 'vegetable'. You can override using the `.groups` argument.
-```
-
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["vegetable"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Sat"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Mon"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Tue"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Thu"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Fri"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Sun"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Wed"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"apple","2":"0.34392072","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA"},{"1":"asparagus","2":"0.04409240","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA"},{"1":"basil","2":"0.41005932","3":"0.0661386","4":"0.11023100","5":"0.02645544","6":"0.46737944","7":"NA","8":"NA"},{"1":"beans","2":"4.70906832","3":"6.5080382","4":"4.38719380","5":"3.39291018","6":"1.52559704","7":"1.91361016","8":"4.08295624"},{"1":"beets","2":"0.37919464","3":"0.6724091","4":"0.15873264","5":"11.89172028","6":"0.02425082","7":"0.32187452","8":"0.18298346"},{"1":"broccoli","2":"NA","3":"0.8201186","4":"NA","5":"NA","6":"0.16534650","7":"1.25883802","8":"0.70768302"},{"1":"carrots","2":"2.33028334","3":"0.8708249","4":"0.35273920","5":"2.67420406","6":"2.13848140","7":"2.93655384","8":"5.56225626"},{"1":"chives","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"0.01763696"},{"1":"cilantro","2":"0.03747854","3":"NA","4":"0.00440924","5":"NA","6":"0.07275246","7":"NA","8":"NA"},{"1":"corn","2":"1.31615814","3":"0.7583893","4":"0.72752460","5":"NA","6":"3.44802568","7":"1.45725382","8":"5.30211110"},{"1":"cucumbers","2":"9.64080326","3":"4.7752069","4":"10.04645334","5":"3.30693000","6":"7.42956940","7":"3.10410496","8":"5.30652034"},{"1":"edamame","2":"4.68922674","3":"NA","4":"1.40213832","5":"NA","6":"NA","7":"NA","8":"NA"},{"1":"hot peppers","2":"NA","3":"1.2588380","4":"0.14109568","5":"NA","6":"NA","7":"NA","8":"0.06834322"},{"1":"jalapeño","2":"1.50796008","3":"5.5534378","4":"0.54895038","5":"0.22487124","6":"1.29411194","7":"0.26234978","8":"0.48060716"},{"1":"kale","2":"1.49032312","3":"2.0679336","4":"0.28219136","5":"0.27998674","6":"0.38139926","7":"0.82673250","8":"0.61729360"},{"1":"kohlrabi","2":"NA","3":"NA","4":"NA","5":"0.42108242","6":"NA","7":"NA","8":"NA"},{"1":"lettuce","2":"1.31615814","3":"2.4581513","4":"0.91712192","5":"2.45153744","6":"1.80117454","7":"1.46607230","8":"1.18608556"},{"1":"onions","2":"1.91361016","3":"0.5092672","4":"0.70768302","5":"0.60186126","6":"0.07275246","7":"0.26014516","8":"NA"},{"1":"peas","2":"2.85277828","3":"4.6341112","4":"2.06793356","5":"3.39731942","6":"0.93696350","7":"2.05691046","8":"1.08026380"},{"1":"peppers","2":"1.38229674","3":"2.5264945","4":"1.44402610","5":"0.70988764","6":"0.33510224","7":"0.50265336","8":"2.44271896"},{"1":"potatoes","2":"2.80207202","3":"0.9700328","4":"NA","5":"11.85203712","6":"3.74124014","7":"NA","8":"4.57017726"},{"1":"pumpkins","2":"92.68883866","3":"30.1195184","4":"31.85675900","5":"NA","6":"NA","7":"NA","8":"NA"},{"1":"radish","2":"0.23148510","3":"0.1962112","4":"0.09479866","5":"0.14770954","6":"0.19400656","7":"0.08157094","8":"NA"},{"1":"raspberries","2":"0.53351804","3":"0.1300726","4":"0.33510224","5":"0.28880522","6":"0.57099658","7":"NA","8":"NA"},{"1":"rutabaga","2":"6.89825598","3":"NA","4":"NA","5":"NA","6":"3.57809826","7":"19.26396956","8":"NA"},{"1":"spinach","2":"0.26014516","3":"0.1477095","4":"0.49603950","5":"0.23368972","6":"0.19621118","7":"0.48722102","8":"0.21384814"},{"1":"squash","2":"56.22221924","3":"24.3345956","4":"18.46810174","5":"NA","6":"NA","7":"NA","8":"NA"},{"1":"strawberries","2":"0.16975574","3":"0.4784025","4":"NA","5":"0.08818480","6":"0.48722102","7":"0.08157094","8":"NA"},{"1":"Swiss chard","2":"0.73413846","3":"1.0736499","4":"0.07054784","5":"2.23107544","6":"0.61729360","7":"1.24781492","8":"0.90830344"},{"1":"tomatoes","2":"35.12621046","3":"11.4926841","4":"48.75076206","5":"34.51773534","6":"85.07628580","7":"75.60964752","8":"58.26590198"},{"1":"zucchini","2":"3.41495638","3":"12.1959578","4":"16.46851140","5":"34.63017096","6":"18.72163304","7":"12.23564100","8":"2.04147812"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -153,10 +102,6 @@ garden_harvest %>%
   group_by(vegetable, variety) %>% 
   summarise(tot_wt_lbs = sum(weight * 0.00220462)) %>% 
   left_join(garden_planting, by = c("vegetable", "variety"))
-```
-
-```
-## `summarise()` has grouped output by 'vegetable'. You can override using the `.groups` argument.
 ```
 
 <div data-pagedtable="false">
@@ -176,13 +121,7 @@ garden_harvest %>%
 plant_min_date <- garden_planting %>% 
   group_by(vegetable, variety) %>% 
   summarise(first_plant_date = min(date)) 
-```
 
-```
-## `summarise()` has grouped output by 'vegetable'. You can override using the `.groups` argument.
-```
-
-```r
 garden_harvest %>% 
   inner_join(plant_min_date, 
             by = c("vegetable", "variety"))
@@ -238,10 +177,6 @@ garden_harvest %>%
   geom_col() +
   labs(title = "Total harvest in pounds for each variety of tomatoes",
        x = "", y ="")
-```
-
-```
-## `summarise()` has grouped output by 'vegetable'. You can override using the `.groups` argument.
 ```
 
 ![](03_exercises_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
@@ -303,19 +238,18 @@ Here is the code to read in the data. We do this a little differently than usual
 data_site <- 
   "https://www.macalester.edu/~dshuman1/data/112/2014-Q4-Trips-History-Data-Small.rds" 
 Trips <- readRDS(gzcon(url(data_site)))
+```
+
+```
+## Error in readRDS(gzcon(url(data_site))): cannot open the connection
+```
+
+```r
 Stations<-read_csv("http://www.macalester.edu/~dshuman1/data/112/DC-Stations.csv")
 ```
 
 ```
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   name = col_character(),
-##   lat = col_double(),
-##   long = col_double(),
-##   nbBikes = col_double(),
-##   nbEmptyDocks = col_double()
-## )
+## Error in open.connection(con, "rb"): Send failure: Connection was reset
 ```
 
 **NOTE:** The `Trips` data table is a random subset of 10,000 trips from the full quarterly data. Start with this small data table to develop your analysis commands. **When you have this working well, you should access the full data set of more than 600,000 events by removing `-Small` from the name of the `data_site`.**
@@ -332,7 +266,9 @@ ggplot(Trips, aes(x = sdate)) +
   geom_density()
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+```
+## Error in ggplot(Trips, aes(x = sdate)): object 'Trips' not found
+```
   
   8. A density plot of the events versus time of day.  You can use `mutate()` with `lubridate`'s  `hour()` and `minute()` functions to extract the hour of the day and minute within the hour from `sdate`. Hint: A minute is 1/60 of an hour, so create a variable where 3:30 is 3.5 and 3:45 is 3.75.
   
@@ -344,7 +280,9 @@ Trips %>%
   geom_density()
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+```
+## Error in mutate(., stime = hour(sdate) + (minute(sdate))/60): object 'Trips' not found
+```
   
   9. A bar graph of the events versus day of the week. Put day on the y-axis.
   
@@ -356,7 +294,9 @@ Trips %>%
   geom_bar()
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+```
+## Error in mutate(., day = wday(sdate, label = TRUE)): object 'Trips' not found
+```
   
   10. Facet your graph from exercise 8. by day of the week. Is there a pattern?
   
@@ -370,7 +310,9 @@ Trips %>%
   facet_wrap(~day)
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+```
+## Error in mutate(., stime = hour(sdate) + (minute(sdate))/60): object 'Trips' not found
+```
   
 The variable `client` describes whether the renter is a regular user (level `Registered`) or has not joined the bike-rental organization (`Causal`). The next set of exercises investigate whether these two different categories of users show different rental behavior and how `client` interacts with the patterns you found in the previous exercises. 
 
@@ -386,7 +328,9 @@ Trips %>%
   facet_wrap(~day)
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+```
+## Error in mutate(., stime = hour(sdate) + (minute(sdate))/60): object 'Trips' not found
+```
 
   12. Change the previous graph by adding the argument `position = position_stack()` to `geom_density()`. In your opinion, is this better or worse in terms of telling a story? What are the advantages/disadvantages of each?
   
@@ -400,7 +344,9 @@ Trips %>%
   facet_wrap(~day)
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+```
+## Error in mutate(., stime = hour(sdate) + (minute(sdate))/60): object 'Trips' not found
+```
   
   13. In this graph, go back to using the regular density plot (without `position = position_stack()`). Add a new variable to the dataset called `weekend` which will be "weekend" if the day is Saturday or Sunday and  "weekday" otherwise (HINT: use the `ifelse()` function and the `wday()` function from `lubridate`). Then, update the graph from the previous problem by faceting on the new `weekend` variable. 
   
@@ -416,7 +362,9 @@ Trips %>%
   facet_wrap(~weekend)
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+```
+## Error in mutate(., stime = hour(sdate) + (minute(sdate))/60): object 'Trips' not found
+```
   
   14. Change the graph from the previous problem to facet on `client` and fill with `weekday`. What information does this graph tell you that the previous didn't? Is one graph better than the other?
   
@@ -432,7 +380,9 @@ Trips %>%
   facet_wrap(~client)
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+```
+## Error in mutate(., stime = hour(sdate) + (minute(sdate))/60): object 'Trips' not found
+```
   
 ### Spatial patterns
 
@@ -449,14 +399,8 @@ Trips %>%
 ```
 
 ```
-## `summarise()` has grouped output by 'lat'. You can override using the `.groups` argument.
+## Error in left_join(., Stations, by = c(estation = "name")): object 'Trips' not found
 ```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_point).
-```
-
-![](03_exercises_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
   
   16. Only 14.4% of the trips in our data are carried out by casual users. Create a plot that shows which area(s) have stations with a much higher percentage of departures by casual users. What patterns do you notice? (Again, we'll improve this next week when we learn about maps).
   
@@ -471,14 +415,8 @@ Trips %>%
 ```
 
 ```
-## `summarise()` has grouped output by 'sstation', 'lat'. You can override using the `.groups` argument.
+## Error in left_join(., Stations, by = c(estation = "name")): object 'Trips' not found
 ```
-
-```
-## Warning: Removed 94 rows containing missing values (geom_point).
-```
-
-![](03_exercises_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
   
 ### Spatiotemporal patterns
 
@@ -495,18 +433,16 @@ Stations_w_most_trips <- Trips %>%
 ```
 
 ```
-## `summarise()` has grouped output by 'sstation'. You can override using the `.groups` argument.
+## Error in mutate(., date = as_date(sdate)): object 'Trips' not found
 ```
 
 ```r
 Stations_w_most_trips
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sstation"],"name":[1],"type":["chr"],"align":["left"]},{"label":["date"],"name":[2],"type":["date"],"align":["right"]},{"label":["n_trips"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8"},{"1":"17th St & Massachusetts Ave NW","2":"2014-10-06","3":"7"},{"1":"Columbus Circle / Union Station","2":"2014-10-02","3":"7"},{"1":"Georgetown Harbor / 30th St NW","2":"2014-10-25","3":"7"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-01","3":"7"},{"1":"New Hampshire Ave & T St NW","2":"2014-10-16","3":"7"},{"1":"14th & V St NW","2":"2014-11-07","3":"6"},{"1":"15th & Euclid St  NW","2":"2014-12-15","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-10-01","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-10-08","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-10-09","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-10-14","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-10-17","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-10-23","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-10-28","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-10-31","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-11-04","3":"6"},{"1":"Columbus Circle / Union Station","2":"2014-12-16","3":"6"},{"1":"Jefferson Dr & 14th St SW","2":"2014-10-18","3":"6"},{"1":"Jefferson Memorial","2":"2014-10-25","3":"6"},{"1":"Lincoln Memorial","2":"2014-10-04","3":"6"},{"1":"Lincoln Memorial","2":"2014-10-18","3":"6"},{"1":"Lincoln Memorial","2":"2014-10-25","3":"6"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-23","3":"6"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-11-06","3":"6"},{"1":"North Capitol St & F St NW","2":"2014-10-01","3":"6"},{"1":"Smithsonian / Jefferson Dr & 12th St SW","2":"2014-10-25","3":"6"},{"1":"US Dept of State / Virginia Ave & 21st St NW","2":"2014-12-10","3":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## Error in eval(expr, envir, enclos): object 'Stations_w_most_trips' not found
+```
   
   18. Use a join operation to make a table with only those trips whose departures match those top ten station-date combinations from the previous part.
   
@@ -514,16 +450,20 @@ Stations_w_most_trips
 ```r
 Trip_w_date <- Trips %>% 
   mutate(date = as_date(sdate))
+```
 
+```
+## Error in mutate(., date = as_date(sdate)): object 'Trips' not found
+```
+
+```r
 Stations_w_most_trips %>% 
   left_join(Trip_w_date, by = c("sstation" = "sstation", "date" = "date"))
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sstation"],"name":[1],"type":["chr"],"align":["left"]},{"label":["date"],"name":[2],"type":["date"],"align":["right"]},{"label":["n_trips"],"name":[3],"type":["int"],"align":["right"]},{"label":["duration"],"name":[4],"type":["chr"],"align":["left"]},{"label":["sdate"],"name":[5],"type":["dttm"],"align":["right"]},{"label":["edate"],"name":[6],"type":["dttm"],"align":["right"]},{"label":["estation"],"name":[7],"type":["chr"],"align":["left"]},{"label":["bikeno"],"name":[8],"type":["chr"],"align":["left"]},{"label":["client"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 13m 0s","5":"2014-11-12 06:08:00","6":"2014-11-12 06:21:00","7":"Maryland & Independence Ave SW","8":"W00733","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 11m 48s","5":"2014-11-12 07:42:00","6":"2014-11-12 07:54:00","7":"L'Enfant Plaza / 7th & C St SW","8":"W20307","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 9m 45s","5":"2014-11-12 08:18:00","6":"2014-11-12 08:28:00","7":"Potomac Ave & 8th St SE","8":"W01369","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 10m 17s","5":"2014-11-12 10:02:00","6":"2014-11-12 10:12:00","7":"11th & F St NW","8":"W00766","9":"Casual"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 9m 45s","5":"2014-11-12 20:07:00","6":"2014-11-12 20:17:00","7":"13th & H St NE","8":"W20481","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 6m 28s","5":"2014-11-12 15:02:00","6":"2014-11-12 15:08:00","7":"11th & H St NE","8":"W01357","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 11m 33s","5":"2014-11-12 18:06:00","6":"2014-11-12 18:18:00","7":"3rd & G St SE","8":"W21695","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 6m 54s","5":"2014-11-12 17:35:00","6":"2014-11-12 17:42:00","7":"11th & H St NE","8":"W00229","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 23m 6s","5":"2014-11-12 14:35:00","6":"2014-11-12 14:58:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W21407","9":"Casual"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 2m 3s","5":"2014-11-12 18:20:00","6":"2014-11-12 18:22:00","7":"3rd & H St NE","8":"W20792","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-12","3":"11","4":"0h 10m 43s","5":"2014-11-12 14:36:00","6":"2014-11-12 14:47:00","7":"Eastern Market Metro / Pennsylvania Ave & 7th St SE","8":"W01158","9":"Registered"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"0h 13m 36s","5":"2014-12-27 13:43:00","6":"2014-12-27 13:56:00","7":"Jefferson Memorial","8":"W00924","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"0h 57m 4s","5":"2014-12-27 09:47:00","6":"2014-12-27 10:44:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W01059","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"0h 53m 48s","5":"2014-12-27 09:50:00","6":"2014-12-27 10:44:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W00653","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"0h 19m 21s","5":"2014-12-27 11:16:00","6":"2014-12-27 11:35:00","7":"Maryland & Independence Ave SW","8":"W20232","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"0h 14m 5s","5":"2014-12-27 15:52:00","6":"2014-12-27 16:06:00","7":"Maryland & Independence Ave SW","8":"W00022","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"0h 38m 22s","5":"2014-12-27 15:50:00","6":"2014-12-27 16:28:00","7":"Jefferson Memorial","8":"W21946","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"0h 9m 21s","5":"2014-12-27 16:04:00","6":"2014-12-27 16:13:00","7":"Washington & Independence Ave SW/HHS","8":"W20584","9":"Registered"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"1h 22m 31s","5":"2014-12-27 12:57:00","6":"2014-12-27 14:20:00","7":"New York Ave & 15th St NW","8":"W21494","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-12-27","3":"9","4":"0h 48m 48s","5":"2014-12-27 13:51:00","6":"2014-12-27 14:40:00","7":"19th St & Constitution Ave NW","8":"W21453","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"2h 10m 20s","5":"2014-10-05 12:35:00","6":"2014-10-05 14:45:00","7":"Ohio Dr & West Basin Dr SW / MLK & FDR Memorials","8":"W01221","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"0h 30m 6s","5":"2014-10-05 11:58:00","6":"2014-10-05 12:28:00","7":"Jefferson Memorial","8":"W20256","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"0h 20m 5s","5":"2014-10-05 18:30:00","6":"2014-10-05 18:50:00","7":"14th St & New York Ave NW","8":"W20890","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"0h 36m 38s","5":"2014-10-05 11:11:00","6":"2014-10-05 11:48:00","7":"Maryland & Independence Ave SW","8":"W21644","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"0h 14m 35s","5":"2014-10-05 19:49:00","6":"2014-10-05 20:04:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W20974","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"0h 25m 37s","5":"2014-10-05 11:53:00","6":"2014-10-05 12:19:00","7":"Iwo Jima Memorial/N Meade & 14th St N","8":"W21089","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"0h 21m 16s","5":"2014-10-05 12:01:00","6":"2014-10-05 12:23:00","7":"Lincoln Memorial","8":"W01177","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"0h 41m 18s","5":"2014-10-05 20:53:00","6":"2014-10-05 21:35:00","7":"New York Ave & 15th St NW","8":"W20605","9":"Registered"},{"1":"Lincoln Memorial","2":"2014-10-05","3":"9","4":"0h 49m 1s","5":"2014-10-05 14:02:00","6":"2014-10-05 14:51:00","7":"Maryland & Independence Ave SW","8":"W20927","9":"Registered"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8","4":"0h 7m 57s","5":"2014-10-09 11:34:00","6":"2014-10-09 11:42:00","7":"21st St & Constitution Ave NW","8":"W20032","9":"Registered"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8","4":"0h 13m 38s","5":"2014-10-09 22:07:00","6":"2014-10-09 22:21:00","7":"Jefferson Memorial","8":"W20283","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8","4":"0h 17m 45s","5":"2014-10-09 13:43:00","6":"2014-10-09 14:01:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W01464","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8","4":"0h 11m 54s","5":"2014-10-09 13:47:00","6":"2014-10-09 13:59:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W01384","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8","4":"1h 32m 53s","5":"2014-10-09 16:51:00","6":"2014-10-09 18:24:00","7":"14th & D St NW / Ronald Reagan Building","8":"W20284","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8","4":"0h 27m 4s","5":"2014-10-09 07:48:00","6":"2014-10-09 08:15:00","7":"8th & Eye St SE / Barracks Row","8":"W21619","9":"Registered"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8","4":"0h 23m 8s","5":"2014-10-09 12:17:00","6":"2014-10-09 12:40:00","7":"Jefferson Dr & 14th St SW","8":"W00851","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-09","3":"8","4":"1h 20m 27s","5":"2014-10-09 15:17:00","6":"2014-10-09 16:37:00","7":"Lincoln Memorial","8":"W00006","9":"Casual"},{"1":"17th St & Massachusetts Ave NW","2":"2014-10-06","3":"7","4":"0h 3m 41s","5":"2014-10-06 12:45:00","6":"2014-10-06 12:49:00","7":"Massachusetts Ave & Dupont Circle NW","8":"W01470","9":"Registered"},{"1":"17th St & Massachusetts Ave NW","2":"2014-10-06","3":"7","4":"0h 11m 5s","5":"2014-10-06 21:33:00","6":"2014-10-06 21:44:00","7":"10th & U St NW","8":"W20675","9":"Registered"},{"1":"17th St & Massachusetts Ave NW","2":"2014-10-06","3":"7","4":"0h 12m 26s","5":"2014-10-06 19:13:00","6":"2014-10-06 19:25:00","7":"New Jersey Ave & N St NW/Dunbar HS","8":"W20069","9":"Registered"},{"1":"17th St & Massachusetts Ave NW","2":"2014-10-06","3":"7","4":"0h 16m 10s","5":"2014-10-06 08:47:00","6":"2014-10-06 09:03:00","7":"25th St & Pennsylvania Ave NW","8":"W20141","9":"Registered"},{"1":"17th St & Massachusetts Ave NW","2":"2014-10-06","3":"7","4":"0h 6m 41s","5":"2014-10-06 07:59:00","6":"2014-10-06 08:06:00","7":"14th & R St NW","8":"W00684","9":"Registered"},{"1":"17th St & Massachusetts Ave NW","2":"2014-10-06","3":"7","4":"0h 3m 9s","5":"2014-10-06 19:22:00","6":"2014-10-06 19:26:00","7":"15th & P St NW","8":"W00409","9":"Registered"},{"1":"17th St & Massachusetts Ave NW","2":"2014-10-06","3":"7","4":"0h 3m 57s","5":"2014-10-06 18:30:00","6":"2014-10-06 18:34:00","7":"15th & P St NW","8":"W21041","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-02","3":"7","4":"0h 12m 43s","5":"2014-10-02 08:23:00","6":"2014-10-02 08:36:00","7":"14th St & New York Ave NW","8":"W20228","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-02","3":"7","4":"0h 23m 24s","5":"2014-10-02 09:19:00","6":"2014-10-02 09:42:00","7":"17th & K St NW / Farragut Square","8":"W00281","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-02","3":"7","4":"0h 8m 8s","5":"2014-10-02 06:07:00","6":"2014-10-02 06:16:00","7":"8th & D St NW","8":"W21071","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-02","3":"7","4":"0h 3m 33s","5":"2014-10-02 09:18:00","6":"2014-10-02 09:22:00","7":"Constitution Ave & 2nd St NW/DOL","8":"W00490","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-02","3":"7","4":"0h 18m 14s","5":"2014-10-02 14:09:00","6":"2014-10-02 14:27:00","7":"New York Ave & 15th St NW","8":"W00759","9":"Casual"},{"1":"Columbus Circle / Union Station","2":"2014-10-02","3":"7","4":"0h 8m 49s","5":"2014-10-02 17:23:00","6":"2014-10-02 17:32:00","7":"3rd St & Pennsylvania Ave SE","8":"W21214","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-02","3":"7","4":"0h 13m 19s","5":"2014-10-02 17:33:00","6":"2014-10-02 17:46:00","7":"14th & D St SE","8":"W21573","9":"Registered"},{"1":"Georgetown Harbor / 30th St NW","2":"2014-10-25","3":"7","4":"0h 24m 26s","5":"2014-10-25 18:01:00","6":"2014-10-25 18:26:00","7":"Georgetown Harbor / 30th St NW","8":"W21957","9":"Casual"},{"1":"Georgetown Harbor / 30th St NW","2":"2014-10-25","3":"7","4":"0h 17m 49s","5":"2014-10-25 16:18:00","6":"2014-10-25 16:36:00","7":"Harvard St & Adams Mill Rd NW","8":"W00842","9":"Registered"},{"1":"Georgetown Harbor / 30th St NW","2":"2014-10-25","3":"7","4":"0h 17m 0s","5":"2014-10-25 16:19:00","6":"2014-10-25 16:36:00","7":"Harvard St & Adams Mill Rd NW","8":"W20600","9":"Casual"},{"1":"Georgetown Harbor / 30th St NW","2":"2014-10-25","3":"7","4":"0h 28m 33s","5":"2014-10-25 17:16:00","6":"2014-10-25 17:44:00","7":"Lincoln Memorial","8":"W21439","9":"Casual"},{"1":"Georgetown Harbor / 30th St NW","2":"2014-10-25","3":"7","4":"0h 25m 15s","5":"2014-10-25 13:42:00","6":"2014-10-25 14:08:00","7":"Constitution Ave & 2nd St NW/DOL","8":"W21629","9":"Casual"},{"1":"Georgetown Harbor / 30th St NW","2":"2014-10-25","3":"7","4":"0h 5m 33s","5":"2014-10-25 11:11:00","6":"2014-10-25 11:17:00","7":"34th & Water St NW","8":"W20311","9":"Casual"},{"1":"Georgetown Harbor / 30th St NW","2":"2014-10-25","3":"7","4":"0h 5m 53s","5":"2014-10-25 18:13:00","6":"2014-10-25 18:19:00","7":"New Hampshire Ave & 24th St NW","8":"W21709","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-01","3":"7","4":"0h 7m 41s","5":"2014-10-01 22:01:00","6":"2014-10-01 22:09:00","7":"14th & Belmont St NW","8":"W20200","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-01","3":"7","4":"0h 6m 31s","5":"2014-10-01 08:49:00","6":"2014-10-01 08:56:00","7":"New Hampshire Ave & 24th St NW","8":"W21010","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-01","3":"7","4":"0h 20m 47s","5":"2014-10-01 22:46:00","6":"2014-10-01 23:07:00","7":"North Capitol St & F St NW","8":"W21122","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-01","3":"7","4":"0h 7m 51s","5":"2014-10-01 18:21:00","6":"2014-10-01 18:29:00","7":"Calvert St & Woodley Pl NW","8":"W21466","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-01","3":"7","4":"0h 1m 48s","5":"2014-10-01 19:28:00","6":"2014-10-01 19:29:00","7":"21st & M St NW","8":"W00928","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-01","3":"7","4":"0h 19m 16s","5":"2014-10-01 20:43:00","6":"2014-10-01 21:02:00","7":"Calvert St & Woodley Pl NW","8":"W20884","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-01","3":"7","4":"0h 11m 31s","5":"2014-10-01 13:13:00","6":"2014-10-01 13:25:00","7":"37th & O St NW / Georgetown University","8":"W21080","9":"Registered"},{"1":"New Hampshire Ave & T St NW","2":"2014-10-16","3":"7","4":"0h 20m 32s","5":"2014-10-16 07:04:00","6":"2014-10-16 07:25:00","7":"North Capitol St & G Pl NE","8":"W21470","9":"Registered"},{"1":"New Hampshire Ave & T St NW","2":"2014-10-16","3":"7","4":"0h 11m 15s","5":"2014-10-16 09:05:00","6":"2014-10-16 09:16:00","7":"17th & G St NW","8":"W20852","9":"Registered"},{"1":"New Hampshire Ave & T St NW","2":"2014-10-16","3":"7","4":"0h 8m 44s","5":"2014-10-16 08:19:00","6":"2014-10-16 08:28:00","7":"19th & K St NW","8":"W20787","9":"Registered"},{"1":"New Hampshire Ave & T St NW","2":"2014-10-16","3":"7","4":"0h 9m 10s","5":"2014-10-16 11:46:00","6":"2014-10-16 11:55:00","7":"19th St & Pennsylvania Ave NW","8":"W01078","9":"Registered"},{"1":"New Hampshire Ave & T St NW","2":"2014-10-16","3":"7","4":"0h 3m 58s","5":"2014-10-16 08:31:00","6":"2014-10-16 08:35:00","7":"Massachusetts Ave & Dupont Circle NW","8":"W21089","9":"Registered"},{"1":"New Hampshire Ave & T St NW","2":"2014-10-16","3":"7","4":"0h 8m 8s","5":"2014-10-16 16:29:00","6":"2014-10-16 16:37:00","7":"14th & Harvard St NW","8":"W21623","9":"Registered"},{"1":"New Hampshire Ave & T St NW","2":"2014-10-16","3":"7","4":"0h 2m 49s","5":"2014-10-16 09:16:00","6":"2014-10-16 09:19:00","7":"Massachusetts Ave & Dupont Circle NW","8":"W00066","9":"Registered"},{"1":"14th & V St NW","2":"2014-11-07","3":"6","4":"0h 9m 23s","5":"2014-11-07 19:54:00","6":"2014-11-07 20:03:00","7":"18th & M St NW","8":"W21318","9":"Registered"},{"1":"14th & V St NW","2":"2014-11-07","3":"6","4":"0h 8m 52s","5":"2014-11-07 17:41:00","6":"2014-11-07 17:50:00","7":"17th St & Massachusetts Ave NW","8":"W00595","9":"Registered"},{"1":"14th & V St NW","2":"2014-11-07","3":"6","4":"0h 10m 52s","5":"2014-11-07 07:38:00","6":"2014-11-07 07:49:00","7":"New York Ave & 15th St NW","8":"W01452","9":"Registered"},{"1":"14th & V St NW","2":"2014-11-07","3":"6","4":"0h 7m 41s","5":"2014-11-07 16:41:00","6":"2014-11-07 16:49:00","7":"Massachusetts Ave & Dupont Circle NW","8":"W20094","9":"Registered"},{"1":"14th & V St NW","2":"2014-11-07","3":"6","4":"0h 14m 48s","5":"2014-11-07 08:00:00","6":"2014-11-07 08:14:00","7":"17th & G St NW","8":"W01215","9":"Registered"},{"1":"14th & V St NW","2":"2014-11-07","3":"6","4":"0h 10m 33s","5":"2014-11-07 14:22:00","6":"2014-11-07 14:32:00","7":"8th & H St NW","8":"W21189","9":"Registered"},{"1":"15th & Euclid St  NW","2":"2014-12-15","3":"6","4":"0h 22m 38s","5":"2014-12-15 18:18:00","6":"2014-12-15 18:41:00","7":"8th & H St NW","8":"W00975","9":"Registered"},{"1":"15th & Euclid St  NW","2":"2014-12-15","3":"6","4":"0h 15m 0s","5":"2014-12-15 09:54:00","6":"2014-12-15 10:09:00","7":"C & O Canal & Wisconsin Ave NW","8":"W21340","9":"Registered"},{"1":"15th & Euclid St  NW","2":"2014-12-15","3":"6","4":"0h 9m 47s","5":"2014-12-15 07:25:00","6":"2014-12-15 07:34:00","7":"3rd & Elm St NW","8":"W20420","9":"Registered"},{"1":"15th & Euclid St  NW","2":"2014-12-15","3":"6","4":"0h 9m 38s","5":"2014-12-15 10:10:00","6":"2014-12-15 10:19:00","7":"Massachusetts Ave & Dupont Circle NW","8":"W01267","9":"Registered"},{"1":"15th & Euclid St  NW","2":"2014-12-15","3":"6","4":"0h 4m 48s","5":"2014-12-15 05:30:00","6":"2014-12-15 05:35:00","7":"14th & R St NW","8":"W01145","9":"Registered"},{"1":"15th & Euclid St  NW","2":"2014-12-15","3":"6","4":"0h 8m 44s","5":"2014-12-15 08:13:00","6":"2014-12-15 08:22:00","7":"17th & K St NW","8":"W00554","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-01","3":"6","4":"0h 3m 27s","5":"2014-10-01 18:07:00","6":"2014-10-01 18:10:00","7":"3rd & H St NE","8":"W00393","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-01","3":"6","4":"0h 9m 8s","5":"2014-10-01 09:06:00","6":"2014-10-01 09:15:00","7":"Metro Center / 12th & G St NW","8":"W20031","9":"Casual"},{"1":"Columbus Circle / Union Station","2":"2014-10-01","3":"6","4":"0h 9m 13s","5":"2014-10-01 20:48:00","6":"2014-10-01 20:57:00","7":"3rd & D St SE","8":"W21573","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-01","3":"6","4":"0h 5m 35s","5":"2014-10-01 17:49:00","6":"2014-10-01 17:55:00","7":"11th & H St NE","8":"W20904","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-01","3":"6","4":"0h 6m 57s","5":"2014-10-01 18:47:00","6":"2014-10-01 18:54:00","7":"15th & F St NE","8":"W21141","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-01","3":"6","4":"0h 11m 29s","5":"2014-10-01 08:38:00","6":"2014-10-01 08:50:00","7":"11th & K St NW","8":"W01193","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-08","3":"6","4":"0h 9m 26s","5":"2014-10-08 07:51:00","6":"2014-10-08 08:00:00","7":"Washington & Independence Ave SW/HHS","8":"W20281","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-08","3":"6","4":"0h 6m 47s","5":"2014-10-08 18:08:00","6":"2014-10-08 18:15:00","7":"15th & F St NE","8":"W20671","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-08","3":"6","4":"0h 3m 34s","5":"2014-10-08 17:35:00","6":"2014-10-08 17:38:00","7":"8th & F St NE","8":"W20556","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-08","3":"6","4":"0h 15m 47s","5":"2014-10-08 13:56:00","6":"2014-10-08 14:12:00","7":"Thomas Circle","8":"W21389","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-08","3":"6","4":"0h 12m 22s","5":"2014-10-08 07:39:00","6":"2014-10-08 07:52:00","7":"4th & E St SW","8":"W00917","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-08","3":"6","4":"0h 11m 28s","5":"2014-10-08 15:59:00","6":"2014-10-08 16:10:00","7":"7th & F St NW / National Portrait Gallery","8":"W20488","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-09","3":"6","4":"0h 12m 36s","5":"2014-10-09 13:50:00","6":"2014-10-09 14:03:00","7":"Neal St & Trinidad Ave NE","8":"W01311","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-09","3":"6","4":"0h 8m 11s","5":"2014-10-09 08:54:00","6":"2014-10-09 09:02:00","7":"7th & F St NW / National Portrait Gallery","8":"W00292","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-09","3":"6","4":"0h 7m 46s","5":"2014-10-09 17:50:00","6":"2014-10-09 17:57:00","7":"Eastern Market Metro / Pennsylvania Ave & 7th St SE","8":"W21025","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-09","3":"6","4":"0h 4m 19s","5":"2014-10-09 19:04:00","6":"2014-10-09 19:08:00","7":"8th & F St NE","8":"W01147","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-09","3":"6","4":"0h 8m 45s","5":"2014-10-09 08:33:00","6":"2014-10-09 08:42:00","7":"1st & K St SE","8":"W20099","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-09","3":"6","4":"0h 8m 25s","5":"2014-10-09 07:48:00","6":"2014-10-09 07:57:00","7":"4th & E St SW","8":"W20153","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-14","3":"6","4":"0h 6m 58s","5":"2014-10-14 17:55:00","6":"2014-10-14 18:02:00","7":"13th & D St NE","8":"W00655","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-14","3":"6","4":"0h 7m 23s","5":"2014-10-14 07:43:00","6":"2014-10-14 07:51:00","7":"Maryland & Independence Ave SW","8":"W20498","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-14","3":"6","4":"0h 15m 57s","5":"2014-10-14 18:50:00","6":"2014-10-14 19:06:00","7":"Maryland & Independence Ave SW","8":"W00951","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-14","3":"6","4":"0h 6m 19s","5":"2014-10-14 18:20:00","6":"2014-10-14 18:26:00","7":"13th & D St NE","8":"W20375","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-14","3":"6","4":"0h 11m 47s","5":"2014-10-14 19:27:00","6":"2014-10-14 19:39:00","7":"15th & East Capitol St NE","8":"W20622","9":"Casual"},{"1":"Columbus Circle / Union Station","2":"2014-10-14","3":"6","4":"0h 4m 22s","5":"2014-10-14 18:35:00","6":"2014-10-14 18:39:00","7":"4th & East Capitol St NE","8":"W01230","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-17","3":"6","4":"0h 11m 16s","5":"2014-10-17 08:02:00","6":"2014-10-17 08:13:00","7":"Potomac Ave & 8th St SE","8":"W00991","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-17","3":"6","4":"0h 10m 43s","5":"2014-10-17 16:15:00","6":"2014-10-17 16:26:00","7":"5th & F St NW","8":"W00991","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-17","3":"6","4":"0h 14m 39s","5":"2014-10-17 18:16:00","6":"2014-10-17 18:30:00","7":"Bladensburg Rd & Benning Rd NE","8":"W01175","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-17","3":"6","4":"0h 32m 46s","5":"2014-10-17 15:59:00","6":"2014-10-17 16:32:00","7":"Lincoln Memorial","8":"W00923","9":"Casual"},{"1":"Columbus Circle / Union Station","2":"2014-10-17","3":"6","4":"0h 7m 27s","5":"2014-10-17 17:00:00","6":"2014-10-17 17:07:00","7":"Eastern Market Metro / Pennsylvania Ave & 7th St SE","8":"W00695","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-17","3":"6","4":"0h 10m 15s","5":"2014-10-17 14:11:00","6":"2014-10-17 14:21:00","7":"Lincoln Park / 13th & East Capitol St NE","8":"W20148","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-23","3":"6","4":"0h 2m 0s","5":"2014-10-23 16:52:00","6":"2014-10-23 16:54:00","7":"3rd & H St NE","8":"W01428","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-23","3":"6","4":"0h 9m 9s","5":"2014-10-23 17:14:00","6":"2014-10-23 17:23:00","7":"Lincoln Park / 13th & East Capitol St NE","8":"W20022","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-23","3":"6","4":"0h 6m 23s","5":"2014-10-23 01:35:00","6":"2014-10-23 01:41:00","7":"13th & D St NE","8":"W00972","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-23","3":"6","4":"0h 14m 21s","5":"2014-10-23 07:31:00","6":"2014-10-23 07:45:00","7":"3rd & Tingey St SE","8":"W20461","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-23","3":"6","4":"0h 10m 53s","5":"2014-10-23 07:24:00","6":"2014-10-23 07:35:00","7":"4th & E St SW","8":"W20475","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-23","3":"6","4":"0h 10m 50s","5":"2014-10-23 06:57:00","6":"2014-10-23 07:08:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W20821","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-28","3":"6","4":"0h 11m 43s","5":"2014-10-28 18:34:00","6":"2014-10-28 18:45:00","7":"Bladensburg Rd & Benning Rd NE","8":"W00123","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-28","3":"6","4":"0h 38m 30s","5":"2014-10-28 12:04:00","6":"2014-10-28 12:42:00","7":"Lincoln Memorial","8":"W20627","9":"Casual"},{"1":"Columbus Circle / Union Station","2":"2014-10-28","3":"6","4":"0h 3m 52s","5":"2014-10-28 17:25:00","6":"2014-10-28 17:29:00","7":"8th & F St NE","8":"W20990","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-28","3":"6","4":"0h 0m 15s","5":"2014-10-28 08:21:00","6":"2014-10-28 08:21:00","7":"Columbus Circle / Union Station","8":"W01315","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-28","3":"6","4":"0h 3m 36s","5":"2014-10-28 21:13:00","6":"2014-10-28 21:17:00","7":"8th & F St NE","8":"W01138","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-28","3":"6","4":"0h 12m 30s","5":"2014-10-28 07:56:00","6":"2014-10-28 08:08:00","7":"Maryland & Independence Ave SW","8":"W20139","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-31","3":"6","4":"0h 3m 4s","5":"2014-10-31 15:48:00","6":"2014-10-31 15:51:00","7":"8th & F St NE","8":"W01030","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-31","3":"6","4":"0h 3m 49s","5":"2014-10-31 16:56:00","6":"2014-10-31 17:00:00","7":"8th & F St NE","8":"W00335","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-31","3":"6","4":"0h 8m 48s","5":"2014-10-31 17:11:00","6":"2014-10-31 17:20:00","7":"13th & H St NE","8":"W21602","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-31","3":"6","4":"0h 12m 58s","5":"2014-10-31 08:29:00","6":"2014-10-31 08:42:00","7":"14th & D St NW / Ronald Reagan Building","8":"W20552","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-31","3":"6","4":"0h 9m 51s","5":"2014-10-31 08:47:00","6":"2014-10-31 08:57:00","7":"Independence Ave & L'Enfant Plaza SW/DOE","8":"W20472","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-10-31","3":"6","4":"0h 13m 46s","5":"2014-10-31 11:34:00","6":"2014-10-31 11:48:00","7":"3rd & Tingey St SE","8":"W20931","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-04","3":"6","4":"0h 2m 58s","5":"2014-11-04 18:47:00","6":"2014-11-04 18:50:00","7":"8th & F St NE","8":"W20118","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-04","3":"6","4":"0h 5m 35s","5":"2014-11-04 17:56:00","6":"2014-11-04 18:02:00","7":"11th & H St NE","8":"W20512","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-04","3":"6","4":"0h 26m 32s","5":"2014-11-04 08:52:00","6":"2014-11-04 09:18:00","7":"Washington & Independence Ave SW/HHS","8":"W21429","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-04","3":"6","4":"0h 4m 18s","5":"2014-11-04 18:08:00","6":"2014-11-04 18:13:00","7":"6th & H St NE","8":"W20171","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-04","3":"6","4":"0h 10m 26s","5":"2014-11-04 07:04:00","6":"2014-11-04 07:15:00","7":"8th & Eye St SE / Barracks Row","8":"W00622","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-11-04","3":"6","4":"0h 17m 3s","5":"2014-11-04 08:30:00","6":"2014-11-04 08:47:00","7":"Thomas Circle","8":"W21077","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-12-16","3":"6","4":"0h 2m 49s","5":"2014-12-16 18:39:00","6":"2014-12-16 18:42:00","7":"3rd & H St NE","8":"W21155","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-12-16","3":"6","4":"0h 3m 35s","5":"2014-12-16 18:40:00","6":"2014-12-16 18:43:00","7":"8th & F St NE","8":"W00125","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-12-16","3":"6","4":"0h 8m 53s","5":"2014-12-16 08:15:00","6":"2014-12-16 08:23:00","7":"Washington & Independence Ave SW/HHS","8":"W21173","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-12-16","3":"6","4":"0h 10m 44s","5":"2014-12-16 08:33:00","6":"2014-12-16 08:43:00","7":"1st & K St SE","8":"W00621","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-12-16","3":"6","4":"0h 7m 15s","5":"2014-12-16 21:49:00","6":"2014-12-16 21:56:00","7":"Eastern Market Metro / Pennsylvania Ave & 7th St SE","8":"W21234","9":"Registered"},{"1":"Columbus Circle / Union Station","2":"2014-12-16","3":"6","4":"0h 7m 13s","5":"2014-12-16 08:39:00","6":"2014-12-16 08:46:00","7":"8th & H St NW","8":"W20295","9":"Registered"},{"1":"Jefferson Dr & 14th St SW","2":"2014-10-18","3":"6","4":"0h 24m 44s","5":"2014-10-18 17:45:00","6":"2014-10-18 18:09:00","7":"Lincoln Memorial","8":"W00970","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-10-18","3":"6","4":"0h 31m 38s","5":"2014-10-18 18:41:00","6":"2014-10-18 19:13:00","7":"Jefferson Dr & 14th St SW","8":"W21682","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-10-18","3":"6","4":"0h 32m 15s","5":"2014-10-18 11:57:00","6":"2014-10-18 12:30:00","7":"Constitution Ave & 2nd St NW/DOL","8":"W00877","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-10-18","3":"6","4":"1h 17m 37s","5":"2014-10-18 12:35:00","6":"2014-10-18 13:52:00","7":"Independence Ave & L'Enfant Plaza SW/DOE","8":"W01442","9":"Casual"},{"1":"Jefferson Dr & 14th St SW","2":"2014-10-18","3":"6","4":"0h 7m 3s","5":"2014-10-18 14:02:00","6":"2014-10-18 14:09:00","7":"Washington & Independence Ave SW/HHS","8":"W00907","9":"Registered"},{"1":"Jefferson Dr & 14th St SW","2":"2014-10-18","3":"6","4":"0h 13m 43s","5":"2014-10-18 19:09:00","6":"2014-10-18 19:22:00","7":"21st St & Constitution Ave NW","8":"W21480","9":"Casual"},{"1":"Jefferson Memorial","2":"2014-10-25","3":"6","4":"0h 27m 24s","5":"2014-10-25 13:48:00","6":"2014-10-25 14:15:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W21241","9":"Casual"},{"1":"Jefferson Memorial","2":"2014-10-25","3":"6","4":"0h 12m 38s","5":"2014-10-25 13:48:00","6":"2014-10-25 14:01:00","7":"Independence Ave & L'Enfant Plaza SW/DOE","8":"W20452","9":"Casual"},{"1":"Jefferson Memorial","2":"2014-10-25","3":"6","4":"0h 29m 4s","5":"2014-10-25 11:06:00","6":"2014-10-25 11:35:00","7":"1st & M St NE","8":"W20830","9":"Casual"},{"1":"Jefferson Memorial","2":"2014-10-25","3":"6","4":"0h 26m 52s","5":"2014-10-25 17:43:00","6":"2014-10-25 18:10:00","7":"11th & K St NW","8":"W00826","9":"Registered"},{"1":"Jefferson Memorial","2":"2014-10-25","3":"6","4":"0h 35m 48s","5":"2014-10-25 18:36:00","6":"2014-10-25 19:12:00","7":"Metro Center / 12th & G St NW","8":"W21533","9":"Casual"},{"1":"Jefferson Memorial","2":"2014-10-25","3":"6","4":"0h 24m 51s","5":"2014-10-25 14:06:00","6":"2014-10-25 14:31:00","7":"Potomac Ave & 35th St S","8":"W00418","9":"Registered"},{"1":"Lincoln Memorial","2":"2014-10-04","3":"6","4":"1h 14m 57s","5":"2014-10-04 19:26:00","6":"2014-10-04 20:41:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W20167","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-04","3":"6","4":"0h 13m 34s","5":"2014-10-04 18:12:00","6":"2014-10-04 18:26:00","7":"Jefferson Memorial","8":"W20167","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-04","3":"6","4":"0h 11m 2s","5":"2014-10-04 22:47:00","6":"2014-10-04 22:58:00","7":"Jefferson Memorial","8":"W01323","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-04","3":"6","4":"0h 42m 27s","5":"2014-10-04 14:04:00","6":"2014-10-04 14:46:00","7":"Columbus Circle / Union Station","8":"W01378","9":"Registered"},{"1":"Lincoln Memorial","2":"2014-10-04","3":"6","4":"0h 26m 31s","5":"2014-10-04 15:06:00","6":"2014-10-04 15:33:00","7":"Jefferson Dr & 14th St SW","8":"W00939","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-04","3":"6","4":"0h 18m 36s","5":"2014-10-04 13:10:00","6":"2014-10-04 13:29:00","7":"Jefferson Dr & 14th St SW","8":"W00531","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-18","3":"6","4":"0h 36m 16s","5":"2014-10-18 11:32:00","6":"2014-10-18 12:08:00","7":"3rd & D St SE","8":"W00993","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-18","3":"6","4":"0h 28m 40s","5":"2014-10-18 15:42:00","6":"2014-10-18 16:11:00","7":"Lincoln Memorial","8":"W21289","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-18","3":"6","4":"0h 15m 56s","5":"2014-10-18 17:03:00","6":"2014-10-18 17:19:00","7":"Jefferson Dr & 14th St SW","8":"W21624","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-18","3":"6","4":"0h 22m 30s","5":"2014-10-18 12:42:00","6":"2014-10-18 13:05:00","7":"Jefferson Memorial","8":"W00408","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-18","3":"6","4":"0h 21m 43s","5":"2014-10-18 14:12:00","6":"2014-10-18 14:34:00","7":"22nd & I St NW / Foggy Bottom","8":"W01203","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-18","3":"6","4":"0h 31m 25s","5":"2014-10-18 14:48:00","6":"2014-10-18 15:20:00","7":"Washington Blvd & Walter Reed Dr","8":"W21464","9":"Registered"},{"1":"Lincoln Memorial","2":"2014-10-25","3":"6","4":"0h 38m 30s","5":"2014-10-25 16:26:00","6":"2014-10-25 17:04:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W20184","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-25","3":"6","4":"0h 18m 2s","5":"2014-10-25 17:59:00","6":"2014-10-25 18:17:00","7":"Jefferson Memorial","8":"W21095","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-25","3":"6","4":"0h 35m 0s","5":"2014-10-25 16:28:00","6":"2014-10-25 17:03:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W21054","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-25","3":"6","4":"0h 11m 19s","5":"2014-10-25 16:08:00","6":"2014-10-25 16:20:00","7":"Jefferson Memorial","8":"W01426","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-25","3":"6","4":"0h 18m 32s","5":"2014-10-25 13:45:00","6":"2014-10-25 14:03:00","7":"Jefferson Dr & 14th St SW","8":"W21212","9":"Casual"},{"1":"Lincoln Memorial","2":"2014-10-25","3":"6","4":"0h 21m 19s","5":"2014-10-25 17:07:00","6":"2014-10-25 17:28:00","7":"Jefferson Memorial","8":"W21059","9":"Casual"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-23","3":"6","4":"0h 8m 36s","5":"2014-10-23 09:46:00","6":"2014-10-23 09:55:00","7":"Wisconsin Ave & O St NW","8":"W01409","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-23","3":"6","4":"0h 4m 50s","5":"2014-10-23 19:46:00","6":"2014-10-23 19:51:00","7":"California St & Florida Ave NW","8":"W01279","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-23","3":"6","4":"0h 13m 37s","5":"2014-10-23 19:39:00","6":"2014-10-23 19:53:00","7":"12th & L St NW","8":"W20311","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-23","3":"6","4":"0h 8m 16s","5":"2014-10-23 07:24:00","6":"2014-10-23 07:32:00","7":"Georgetown Harbor / 30th St NW","8":"W00440","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-23","3":"6","4":"0h 6m 16s","5":"2014-10-23 14:15:00","6":"2014-10-23 14:21:00","7":"25th St & Pennsylvania Ave NW","8":"W20655","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-10-23","3":"6","4":"0h 12m 30s","5":"2014-10-23 17:52:00","6":"2014-10-23 18:05:00","7":"16th & Harvard St NW","8":"W21922","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-11-06","3":"6","4":"0h 4m 39s","5":"2014-11-06 08:50:00","6":"2014-11-06 08:54:00","7":"19th & K St NW","8":"W01029","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-11-06","3":"6","4":"0h 8m 19s","5":"2014-11-06 20:55:00","6":"2014-11-06 21:04:00","7":"14th & V St NW","8":"W00607","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-11-06","3":"6","4":"0h 36m 0s","5":"2014-11-06 07:30:00","6":"2014-11-06 08:06:00","7":"Fort Totten Metro","8":"W20452","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-11-06","3":"6","4":"0h 3m 45s","5":"2014-11-06 09:00:00","6":"2014-11-06 09:04:00","7":"24th & N St NW","8":"W20333","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-11-06","3":"6","4":"0h 15m 28s","5":"2014-11-06 18:58:00","6":"2014-11-06 19:14:00","7":"8th & F St NW / National Portrait Gallery","8":"W20480","9":"Registered"},{"1":"Massachusetts Ave & Dupont Circle NW","2":"2014-11-06","3":"6","4":"0h 15m 42s","5":"2014-11-06 18:39:00","6":"2014-11-06 18:55:00","7":"3rd & H St NW","8":"W01121","9":"Registered"},{"1":"North Capitol St & F St NW","2":"2014-10-01","3":"6","4":"0h 6m 33s","5":"2014-10-01 18:08:00","6":"2014-10-01 18:14:00","7":"M St & Delaware Ave NE","8":"W20595","9":"Registered"},{"1":"North Capitol St & F St NW","2":"2014-10-01","3":"6","4":"0h 8m 51s","5":"2014-10-01 18:09:00","6":"2014-10-01 18:18:00","7":"Eastern Market / 7th & North Carolina Ave SE","8":"W00418","9":"Registered"},{"1":"North Capitol St & F St NW","2":"2014-10-01","3":"6","4":"0h 17m 23s","5":"2014-10-01 18:34:00","6":"2014-10-01 18:51:00","7":"10th & U St NW","8":"W20867","9":"Registered"},{"1":"North Capitol St & F St NW","2":"2014-10-01","3":"6","4":"0h 21m 46s","5":"2014-10-01 20:56:00","6":"2014-10-01 21:18:00","7":"Kennedy Center","8":"W01187","9":"Registered"},{"1":"North Capitol St & F St NW","2":"2014-10-01","3":"6","4":"0h 9m 14s","5":"2014-10-01 15:27:00","6":"2014-10-01 15:36:00","7":"Maryland & Independence Ave SW","8":"W01054","9":"Registered"},{"1":"North Capitol St & F St NW","2":"2014-10-01","3":"6","4":"0h 11m 20s","5":"2014-10-01 17:07:00","6":"2014-10-01 17:18:00","7":"19th & East Capitol St SE","8":"W20267","9":"Registered"},{"1":"Smithsonian / Jefferson Dr & 12th St SW","2":"2014-10-25","3":"6","4":"0h 26m 24s","5":"2014-10-25 15:22:00","6":"2014-10-25 15:48:00","7":"14th & Rhode Island Ave NW","8":"W21892","9":"Casual"},{"1":"Smithsonian / Jefferson Dr & 12th St SW","2":"2014-10-25","3":"6","4":"1h 43m 11s","5":"2014-10-25 19:02:00","6":"2014-10-25 20:45:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W21296","9":"Casual"},{"1":"Smithsonian / Jefferson Dr & 12th St SW","2":"2014-10-25","3":"6","4":"0h 19m 3s","5":"2014-10-25 16:10:00","6":"2014-10-25 16:29:00","7":"North Capitol St & F St NW","8":"W21031","9":"Casual"},{"1":"Smithsonian / Jefferson Dr & 12th St SW","2":"2014-10-25","3":"6","4":"0h 33m 30s","5":"2014-10-25 17:33:00","6":"2014-10-25 18:06:00","7":"22nd & I St NW / Foggy Bottom","8":"W20759","9":"Registered"},{"1":"Smithsonian / Jefferson Dr & 12th St SW","2":"2014-10-25","3":"6","4":"1h 15m 39s","5":"2014-10-25 13:43:00","6":"2014-10-25 14:59:00","7":"Ohio Dr & West Basin Dr SW / MLK & FDR Memorials","8":"W01304","9":"Casual"},{"1":"Smithsonian / Jefferson Dr & 12th St SW","2":"2014-10-25","3":"6","4":"0h 55m 14s","5":"2014-10-25 13:05:00","6":"2014-10-25 14:00:00","7":"Smithsonian / Jefferson Dr & 12th St SW","8":"W21630","9":"Casual"},{"1":"US Dept of State / Virginia Ave & 21st St NW","2":"2014-12-10","3":"6","4":"0h 13m 29s","5":"2014-12-10 20:00:00","6":"2014-12-10 20:13:00","7":"11th & M St NW","8":"W21541","9":"Casual"},{"1":"US Dept of State / Virginia Ave & 21st St NW","2":"2014-12-10","3":"6","4":"0h 27m 24s","5":"2014-12-10 16:40:00","6":"2014-12-10 17:07:00","7":"Georgia & New Hampshire Ave NW","8":"W01144","9":"Registered"},{"1":"US Dept of State / Virginia Ave & 21st St NW","2":"2014-12-10","3":"6","4":"0h 3m 47s","5":"2014-12-10 15:11:00","6":"2014-12-10 15:15:00","7":"22nd & I St NW / Foggy Bottom","8":"W01351","9":"Registered"},{"1":"US Dept of State / Virginia Ave & 21st St NW","2":"2014-12-10","3":"6","4":"0h 12m 13s","5":"2014-12-10 17:03:00","6":"2014-12-10 17:15:00","7":"10th & E St NW","8":"W01009","9":"Registered"},{"1":"US Dept of State / Virginia Ave & 21st St NW","2":"2014-12-10","3":"6","4":"0h 9m 19s","5":"2014-12-10 16:40:00","6":"2014-12-10 16:49:00","7":"New York Ave & 15th St NW","8":"W00109","9":"Registered"},{"1":"US Dept of State / Virginia Ave & 21st St NW","2":"2014-12-10","3":"6","4":"0h 3m 27s","5":"2014-12-10 08:32:00","6":"2014-12-10 08:36:00","7":"22nd & I St NW / Foggy Bottom","8":"W00689","9":"Registered"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## Error in left_join(., Trip_w_date, by = c(sstation = "sstation", date = "date")): object 'Stations_w_most_trips' not found
+```
   
   19. Build on the code from the previous problem (ie. copy that code below and then %>% into the next step.) and group the trips by client type and day of the week (use the name, not the number). Find the proportion of trips by day within each client type (ie. the proportions for all 7 days within each client type add up to 1). Display your results so day of week is a column and there is a column for each client type. Interpret your results.
   
@@ -538,7 +478,9 @@ Stations_w_most_trips %>%
   geom_col(aes(x = n, y = week_day, fill = client))
 ```
 
-![](03_exercises_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+```
+## Error in left_join(., Trip_w_date, by = c(sstation = "sstation", date = "date")): object 'Stations_w_most_trips' not found
+```
   
 
 **DID YOU REMEMBER TO GO BACK AND CHANGE THIS SET OF EXERCISES TO THE LARGER DATASET? IF NOT, DO THAT NOW.**
