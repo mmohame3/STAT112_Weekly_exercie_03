@@ -122,14 +122,6 @@ garden_harvest %>%
 
 collected data on how much a pound of organic vegetables would cost and compare to what I produced? How might you go about doing this?
 
-```{r}
-garden_harvest
-garden_spending
-
-```
-
-
-
   4. Subset the data to tomatoes. Reorder the tomato varieties from smallest to largest first harvest date. Create a barplot of total harvest in pounds for each variety, in the new order.
 
 ```{r}
@@ -186,7 +178,7 @@ Here is the code to read in the data. We do this a little differently than usual
 
 ```{r cache=TRUE}
 data_site <- 
-  "https://www.macalester.edu/~dshuman1/data/112/2014-Q4-Trips-History-Data-Small.rds" 
+  "https://www.macalester.edu/~dshuman1/data/112/2014-Q4-Trips-History-Data.rds" 
 Trips <- readRDS(gzcon(url(data_site)))
 Stations<-read_csv("http://www.macalester.edu/~dshuman1/data/112/DC-Stations.csv")
 ```
@@ -201,8 +193,11 @@ It's natural to expect that bikes are rented more at some times of day, some day
   
 ```{r}
 ggplot(Trips, aes(x = sdate)) +
-  geom_density()
+  geom_density() +
+  labs(title = "Distribution of rental bikes throughout year" , x = " ", y = " ")
 ```
+  
+  > As it gets closer to the winter, fewer bikes are renred
   
   8. A density plot of the events versus time of day.  You can use `mutate()` with `lubridate`'s  `hour()` and `minute()` functions to extract the hour of the day and minute within the hour from `sdate`. Hint: A minute is 1/60 of an hour, so create a variable where 3:30 is 3.5 and 3:45 is 3.75.
   
@@ -210,7 +205,9 @@ ggplot(Trips, aes(x = sdate)) +
 Trips %>%
   mutate(stime = hour(sdate) + (minute(sdate))/60) %>% 
   ggplot(aes(x = stime)) +
-  geom_density()
+  geom_density() +
+    labs(title = "Distribution of rental bikes throughout the day" , x = " ", y = " ")
+
 
 ```
   
@@ -346,9 +343,14 @@ Stations_w_most_trips %>%
   left_join(Trip_w_date, by = c("sstation" = "sstation", "date" = "date")) %>% 
   mutate(week_day = wday(date, label = TRUE)) %>% 
   group_by(client, week_day) %>% 
-  count(week_day) %>% 
-  ggplot() +
-  geom_col(aes(x = n, y = week_day, fill = client))
+  count() %>% 
+  group_by(client) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  
+  pivot_wider(id_cols = week_day,
+              names_from = client,
+              values_from = prop)
+  
 ```
   
 
@@ -357,6 +359,8 @@ Stations_w_most_trips %>%
 ## GitHub link
 
   20. Below, provide a link to your GitHub page with this set of Weekly Exercises. Specifically, if the name of the file is 03_exercises.Rmd, provide a link to the 03_exercises.md file, which is the one that will be most readable on GitHub.
+  
+ [03_exercises.md](https://github.com/mmohame3/STAT112_Weekly_exercie_03/blob/main/03_exercises.md)
 
 ## Challenge problem! 
 
